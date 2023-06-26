@@ -34,6 +34,12 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+  <script src=
+    "https://smtpjs.com/v3/smtp.js">
+  </script>
+  
+  
 </head>
 
 <body>
@@ -65,7 +71,7 @@
         <a href="https://facebook.com/tharuka.tharuka.7549" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="https://www.instagram.com/tharuka_nisal_vidanapathirana/" class="instagram"><i class="bi bi-instagram"></i></a>
         <a href="https://www.tiktok.com/@tharuka_nisal" class="twitter"><i class="bi bi-tiktok"></i></a>
-        <a href="#" class="twitter"><i class="bi bi-youtube"></i></a>
+        <button type="button" class="btn btn-secondary" id="cv" onclick="downloadPDF()">Download CV</button>
       </div>
 
     </div>
@@ -730,6 +736,26 @@
         });
     </script>
     <script src="https://cdn.jsdelivve"></script>
+    <script>
+      function downloadPDF() {
+        var fileContent = "Tharuka Nisal CV"; // Replace with actual PDF content
+        var fileName = "Tharuka Nisal CV.pdf"; // Replace with desired filename
+    
+        var blob = new Blob([fileContent], { type: "application/pdf" });
+        var url = URL.createObjectURL(blob);
+    
+        var downloadLink = document.createElement("a");
+        downloadLink.href = url;
+        downloadLink.download = fileName;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+    
+        downloadLink.click();
+    
+        document.body.removeChild(downloadLink);
+        URL.revokeObjectURL(url);
+      }
+    </script>
 
 </body>
 

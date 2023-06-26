@@ -44,6 +44,9 @@ a:hover {
   color: #35e888;
   text-decoration: none;
 }
+#cv:hover{
+  background-color: #35e888;
+}
 
 h1,
 h2,
