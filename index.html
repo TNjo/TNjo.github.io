@@ -81,7 +81,7 @@ emailjs.init("flFrrAV-dqwTbPBOu");
         <a href="https://facebook.com/tharuka.tharuka.7549" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="https://www.instagram.com/tharuka_nisal_vidanapathirana/" class="instagram"><i class="bi bi-instagram"></i></a>
         <a href="https://www.tiktok.com/@tharuka_nisal" class="twitter"><i class="bi bi-tiktok"></i></a>
-        <a href="Tharuka Nisal CV.pdf"><button type="button" class="btn btn-secondary" id="cv">Download CV</button></a>
+        <button type="button" class="btn btn-secondary" id="cv">Download CV</button>
         
       </div>
 
@@ -747,24 +747,27 @@ emailjs.init("flFrrAV-dqwTbPBOu");
     <script src="https://cdn.jsdelivve"></script>
     <script>
       function downloadPDF() {
-        var fileContent = "Tharuka Nisal CV"; // Replace with actual PDF content
         var fileName = "Tharuka Nisal CV.pdf"; // Replace with desired filename
-    
-        var blob = new Blob([fileContent], { type: "application/pdf" });
-        var url = URL.createObjectURL(blob);
-    
-        var downloadLink = document.createElement("a");
-        downloadLink.href = url;
-        downloadLink.download = fileName;
-        downloadLink.style.display = "none";
-        document.body.appendChild(downloadLink);
-    
-        downloadLink.click();
-    
-        document.body.removeChild(downloadLink);
-        URL.revokeObjectURL(url);
+        var url = "https://github.com/TNjo/TNjo.github.io/blob/main/Tharuka%20Nisal%20CV.pdf"; // Replace with the correct GitHub URL of the PDF
+        
+        fetch(url)
+          .then(response => response.blob())
+          .then(blob => {
+            var downloadLink = document.createElement("a");
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = fileName;
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            URL.revokeObjectURL(downloadLink.href);
+          })
+          .catch(error => {
+            console.error("Error fetching the PDF:", error);
+          });
       }
     </script>
+    
 
     <script>
       function sendMail(){
